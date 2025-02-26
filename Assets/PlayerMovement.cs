@@ -1,23 +1,27 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerTwoMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float movementPerClick = 0.1f;
 
+    [SerializeField] KeyCode key;
+
     bool change = false;
-    [SerializeField] Sprite redRun0;
-    [SerializeField] Sprite redRun1;
+    [SerializeField] Sprite run0;
+    [SerializeField] Sprite run1;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)){
+        if (Input.GetKeyDown(key)){
             if (change){
-                GetComponent<SpriteRenderer>().sprite = redRun0;
+                GetComponent<SpriteRenderer>().sprite = run0;
                 change = false;
             }
             else{
-                GetComponent<SpriteRenderer>().sprite = redRun1;
+                GetComponent<SpriteRenderer>().sprite = run1;
                 change = true;
             }
             transform.position += new Vector3(movementPerClick,0,0);
